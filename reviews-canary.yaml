@@ -1,0 +1,34 @@
+---
+apiVersion: flagger.app/v1beta1
+kind: Canary
+metadata:
+  name: reviews
+spec:
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: reviews
+  service:
+    port: 9080
+  analysis:
+    interval: 1m
+    threshold: 5
+    maxWeight: 50
+    stepWeight: 20
+    metrics:
+      - name: request-success-rate
+        thresholdRange:
+          min: 99
+        interval: 1m
+      - name: request-duration
+        thresholdRange:
+          max: 100
+        interval: 30s
+    webhooks:
+      - name: "load test"
+        type: rollout
+        url: http://flagger-loadtester.test/
+        timeout: 5s
+        metadata:
+          cmd: "hey -z 1m -q 5 -c 2 http://reviews.bookinfo:9080/reviews/123"
+
