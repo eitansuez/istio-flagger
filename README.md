@@ -152,10 +152,6 @@ kubectl apply -f reviews-canary.yaml -n bookinfo
 
 The status of the resource will initially be "Initializing".  When flagger has finished initializing, the status will change to "Initialized."
 
-```shell
-kubectl -n bookinfo describe canary/reviews
-```
-
 Describe the reviews canary:
 
 ```shell
@@ -180,7 +176,7 @@ Also note that the reviews deployment is set to 0 replicas and replaced with "re
 That's because that deployment will become the canary version when changes are applied.
 So it should not be receiving any traffic during stable (non-promotion) periods.
 
-At this point, test that the productpage comes up and that it shows served reviews: "reviews served by reviews-primary-...".
+At this point, test that the `productpage` comes up and that it shows served reviews: "reviews served by reviews-primary-...".
 
 ## Turn on Envoy sidecar console logging
 
@@ -199,7 +195,7 @@ This can be done using with the [Telemetry](https://istio.io/latest/docs/tasks/o
 1. Tail the sidecar logs:
 
     ```shell
-    kubectl logs --follow -n bookinfo reviews-<tab> -c istio-proxy
+    kubectl logs --follow -n bookinfo -l app=reviews -c istio-proxy
     ```
 
 The canary is configured to load-test the new version of the app using the Flagger loadtester.  You can see the requests come through by tailing those logs.
