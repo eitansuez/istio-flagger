@@ -186,7 +186,7 @@ We deployed Istio with the default profile, which does not turn on console loggi
 
 This can be done using with the [Telemetry](https://istio.io/latest/docs/tasks/observability/logs/access-log/#enable-envoys-access-logging) resource.
 
-1. Apply the Telemetry resource:
+1. Apply the [`telemetry.yaml`](telemetry.yaml) Telemetry resource:
 
     ```shell
     kubectl apply -f telemetry.yaml
