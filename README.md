@@ -93,7 +93,7 @@ helm upgrade -i flagger-loadtester flagger/loadtester \
 ## The scenario
 
 The `bookinfo` demo application comes with three versions of the `reviews` service.
-The idea is to deploy bookinfo with initial version 1, and to use Flagger to canary-upgrade `reviews` to subsequent versions.
+The idea is to deploy `bookinfo` with initial version 1, and to use Flagger to canary-upgrade `reviews` to subsequent versions.
 
 ## How does it work?  A general outline
 
@@ -105,13 +105,13 @@ The idea is to deploy bookinfo with initial version 1, and to use Flagger to can
 
 ## Deploy `bookinfo`
 
-The manifests for the initial deployment of the `bookinfo` application are in the file `bookinfo.yaml`.
+The manifests for the initial deployment of the `bookinfo` application are in [`bookinfo.yaml`](bookinfo.yaml).
 
-This manfiest differs from the original version published on istio.io as follows:
+This manifest differs from the original version published on istio.io as follows:
 
 - The `reviews` Deployment is named `reviews`, not `reviews-v1` or `reviews-v2` etc..
 - The `version` label has been removed.
-- We do not initially deploy versions 2 and 3.  We will let Flagger do that.  The manifests for those deployments have been separated out to the files `reviews-v2.yaml` and `reviews-v3.yaml`.  The only difference between these deployments and the original is the container image name they reference.
+- We do not initially deploy versions 2 and 3.  We will let Flagger do that.  The manifests for those deployments have been separated out to [`reviews-v2.yaml`](reviews-v2.yaml) and [`reviews-v3.yaml`](reviews-v3.yaml).  The only difference between these deployments and the original is the container image name they reference.
 
 
 1. Create the `bookinfo` namespace
@@ -140,7 +140,7 @@ This manfiest differs from the original version published on istio.io as follows
 
 ## Draft a Canary custom resource
 
-See the file `reviews-canary.yaml`.
+See [`reviews-canary.yaml`](reviews-canary.yaml).
 
 This file configures the parameters that become a part of the canary deployment algorithm that Flagger performs.
 
