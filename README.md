@@ -231,7 +231,8 @@ kubectl apply -f reviews-v3.yaml -n bookinfo
 ```
 
 You may see a warning-type event that states:
-"Halt advancement no values found for istio metric request-success-rate probably reviews.bookinfo is not receiving traffic: running query failed: no values found".
+
+> _Halt advancement no values found for istio metric request-success-rate probably reviews.bookinfo is not receiving traffic: running query failed: no values found_
 
 I suspect what happens here is that there's a delay in getting the metrics needed to ascertain whether to proceed.  So the algorithm waits.  Once Flagger knows the new version of the app meets the specified metrics thresholds, we proceed (or rollback).
 
