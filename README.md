@@ -220,7 +220,7 @@ You should see the progression go from 20% of traffic siphoned to the canary, to
 
 The last events should state "Routing all traffic to primary" followed by "Promotion completed".
 
-The `reviews-primary` pod id will change after promotion, since it represents a newew version.
+The `reviews-primary` pod id will change after promotion, since it represents a newer version.
 
 The product page should now show ratings using black colored stars.
 
