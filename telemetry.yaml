@@ -6,5 +6,5 @@ metadata:
   namespace: istio-system
 spec:
   accessLogging:
-    - providers:
-      - name: envoy
+  - providers:
+    - name: envoy
