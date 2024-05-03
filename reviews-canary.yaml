@@ -12,15 +12,20 @@ spec:
     port: 9080
   analysis:
     interval: 1m
+    # max number of failed metric checks before rollback
     threshold: 5
+    # max traffic percentage routed to canary
     maxWeight: 50
+    # canary increment step percentage
     stepWeight: 20
     metrics:
     - name: request-success-rate
+      # minimum req success rate (non 5xx responses) percentage
       thresholdRange:
         min: 99
       interval: 1m
     - name: request-duration
+      # maximum req duration P99 milliseconds
       thresholdRange:
         max: 100
       interval: 30s
