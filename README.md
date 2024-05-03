@@ -170,7 +170,7 @@ kubectl get svc -n bookinfo
 > 
 > What does this message mean?:
 > 
-> "reviews-primary.bookinfo not ready: waiting for rollout to finish: observed deployment generation less than desired generation"
+> _reviews-primary.bookinfo not ready: waiting for rollout to finish: observed deployment generation less than desired generation_
 
 Also note that the reviews deployment is set to 0 replicas and replaced with "reviews-primary".
 That's because that deployment will become the canary version when changes are applied.
